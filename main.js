@@ -7,8 +7,8 @@ export const options = {
     Scenario_1: {
       executor: 'constant-vus',
       gracefulStop: '2m',
-      duration: '5m',
-      vus: 100,
+      duration: '5h',
+      vus: 500,
       exec: 'scenario_1',
     },
   },

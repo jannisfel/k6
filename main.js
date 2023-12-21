@@ -4,12 +4,16 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js'
 
 export const options = {
   thresholds: {},
-  scenarios: {
     Scenario_1: {
-      executor: 'constant-vus',
-      gracefulStop: '30s',
-      duration: '10m',
-      vus: 1000,
+      executor: 'ramping-vus',
+      gracefulStop: '2m',
+      stages: [
+        { target: 300, duration: '1m' },
+        { target: 900, duration: '15s' },
+        { target: 1000, duration: '8m 45s' },
+      ],
+      startVUs: 64,
+      gracefulRampDown: '30s',
       exec: 'scenario_1',
     },
   },
@@ -249,32 +253,6 @@ export function scenario_1() {
         },
       }
     )
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=d70e4b9ca4', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=a06007cdbb', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
     sleep(0.6)
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
@@ -384,32 +362,6 @@ export function scenario_1() {
         'sec-fetch-site': 'same-origin',
       },
     })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=7ef6e0caf3', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=80e481415b', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
         host: 'preview.eniv.app',
@@ -463,32 +415,6 @@ export function scenario_1() {
         'sec-fetch-site': 'same-origin',
       },
     })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=7c95287b37', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=de3bdcb183', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
     sleep(0.8)
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
@@ -517,32 +443,6 @@ export function scenario_1() {
       },
     })
     response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=643b4d0a07', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=b6588099f6', {
       headers: {
         host: 'preview.eniv.app',
         accept: '*/*',
@@ -596,32 +496,6 @@ export function scenario_1() {
         'sec-fetch-site': 'same-origin',
       },
     })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=54a02774dd', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=8b2a3934d4', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
         host: 'preview.eniv.app',
@@ -650,32 +524,6 @@ export function scenario_1() {
       },
     })
     response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=975e21a761', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/recipent/?videoid=80d66064e5', {
       headers: {
         host: 'preview.eniv.app',
         accept: '*/*',
@@ -718,26 +566,6 @@ export function scenario_1() {
   })
 
   group('page_3 - https://preview.eniv.app/feed.php', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"0fa79f1d-1516-4b6c-9348-56c7a11f02fb","location":"https://preview.eniv.app/random.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
-      {
-        headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
-          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-          'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
-          connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
-          'sec-fetch-site': 'same-origin',
-        },
-      }
-    )
-
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
         host: 'preview.eniv.app',
@@ -751,7 +579,6 @@ export function scenario_1() {
         'sec-fetch-site': 'same-origin',
       },
     })
-
     response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
       headers: {
         host: 'eniv.app',
@@ -765,7 +592,6 @@ export function scenario_1() {
         'sec-fetch-site': 'same-site',
       },
     })
-
     response = http.get('https://eniv.app/fav/favicon-16x16.png', {
       headers: {
         host: 'eniv.app',
@@ -780,7 +606,6 @@ export function scenario_1() {
       },
     })
     sleep(1)
-
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
         host: 'preview.eniv.app',
@@ -795,7 +620,6 @@ export function scenario_1() {
       },
     })
     sleep(0.7)
-
     response = http.get('https://preview.eniv.app/account.php', {
       headers: {
         host: 'preview.eniv.app',
@@ -812,26 +636,6 @@ export function scenario_1() {
   })
 
   group('page_4 - https://preview.eniv.app/account.php', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/random.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"3506463e-f301-42bb-8837-b41f616542de","location":"https://preview.eniv.app/feed.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
-      {
-        headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
-          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-          'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
-          connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
-          'sec-fetch-site': 'same-origin',
-        },
-      }
-    )
-
     response = http.get('https://preview.eniv.app/api/live/update/', {
       headers: {
         host: 'preview.eniv.app',

@@ -11,7 +11,7 @@ export const options = {
       stages: [
         { target: 300, duration: '1m' },
         { target: 900, duration: '15s' },
-        { target: 1000, duration: '8m 45s' },
+        { target: 1000, duration: '9m' },
       ],
       startVUs: 64,
       gracefulRampDown: '30s',

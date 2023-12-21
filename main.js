@@ -6,15 +6,10 @@ export const options = {
   thresholds: {},
   scenarios: {
     Scenario_1: {
-      executor: 'ramping-vus',
-      gracefulStop: '2m',
-      stages: [
-        { target: 300, duration: '1m' },
-        { target: 900, duration: '15s' },
-        { target: 1000, duration: '9m' },
-      ],
-      startVUs: 64,
-      gracefulRampDown: '30s',
+      executor: 'constant-vus',
+      gracefulStop: '30s',
+      duration: '5m00s',
+      vus: 1000,
       exec: 'scenario_1',
     },
   },

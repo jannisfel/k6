@@ -4,6 +4,7 @@ import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js'
 
 export const options = {
   thresholds: {},
+  scenarios: {
     Scenario_1: {
       executor: 'ramping-vus',
       gracefulStop: '2m',

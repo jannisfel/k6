@@ -3,6 +3,9 @@ on:
   push:
 
   workflow_dispatch:
+
+  schedule:
+    - cron: "0 */6 * * *"
 jobs:
   build:
     name: Run k6 test

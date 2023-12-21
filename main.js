@@ -1,6 +1,5 @@
 import { sleep, group } from 'k6'
 import http from 'k6/http'
-import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js'
 
 export const options = {
   thresholds: {},
@@ -8,240 +7,186 @@ export const options = {
     Scenario_1: {
       executor: 'constant-vus',
       gracefulStop: '2m',
-      duration: '5m00s',
-      vus: 1000,
+      duration: '5m',
+      vus: 12,
       exec: 'scenario_1',
     },
   },
 }
 
 export function scenario_1() {
-  let formData, response
+  let response
 
-  group('page_1 - https://preview.eniv.app/', function () {
-    response = http.get('https://preview.eniv.app/api/live/update/', {
+  group('page_2 - https://maltherapie-bubikon.ch/index.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html', {
       headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
         'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.9)
-    response = http.get('https://preview.eniv.app/random.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-  })
-
-  group('page_2 - https://preview.eniv.app/random.php', function () {
-    response = http.get('https://preview.eniv.app/index.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/public/fa/css/fontawesome.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/public/fa/css/brands.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/public/fa/css/solid.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/public/fa/css/regular.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/public/font/kys4sxr.css', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: 'text/css,*/*;q=0.1',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'style',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
+        'sec-fetch-user': '?1',
       },
     })
     response = http.get(
-      'https://p.typekit.net/p.css?s=1&k=kys4sxr&ht=tk&f=15511&a=156134852&app=typekit&e=css',
+      'https://maltherapie-bubikon.ch/wp-includes/css/dist/block-library/style.min.css%3Fver=6.3.css',
       {
         headers: {
-          host: 'p.typekit.net',
+          host: 'maltherapie-bubikon.ch',
           accept: 'text/css,*/*;q=0.1',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/style.min.css%3Fver=2.7.1.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/theme.min.css%3Fver=2.7.1.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/css/frontend-lite.min.css%3Fver=3.12.2.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-5.css%3Fver=1692029049.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css%3Fver=5.18.0.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css%3Fver=5.3.6.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/global.css%3Fver=1692029190.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-12.css%3Fver=1692029190.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://fonts.googleapis.com/css?family=Montserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&display=swap&ver=6.3',
+      {
+        headers: {
+          host: 'fonts.googleapis.com',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'fonts.googleapis.com',
           connection: 'keep-alive',
           'sec-fetch-dest': 'style',
           'sec-fetch-mode': 'no-cors',
@@ -249,1723 +194,1303 @@ export function scenario_1() {
         },
       }
     )
-    sleep(0.6)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    // (clone)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.5)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.6)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.7)
-    response = http.get('https://preview.eniv.app/feed.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-  })
-
-  group('page_3 - https://preview.eniv.app/feed.php', function () {
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-    sleep(1)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.7)
-    response = http.get('https://preview.eniv.app/account.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-  })
-
-  group('page_4 - https://preview.eniv.app/account.php', function () {
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.7)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.6)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.7)
-
-    formData = new FormData()
-    formData.boundary = '---------------------------305907746922035276053885490995'
-    formData.append('username', 'obvTiger')
-    formData.append('password', 'dededed')
-
-    response = http.post('https://preview.eniv.app/api/account/session/create/', formData.body(), {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'content-type':
-          'multipart/form-data; boundary=---------------------------305907746922035276053885490995',
-        origin: 'https://preview.eniv.app',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/account.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.5)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.6)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.8)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.7)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(0.6)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/session/destroy/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/feed.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"8822972b-3f2e-46c2-9c0b-c06ef9b033e7","location":"https://preview.eniv.app/account.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
       {
         headers: {
-          host: 'preview.eniv.app',
+          host: 'maltherapie-bubikon.ch',
           accept: '*/*',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://preview.eniv.app/account.php#', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/account.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/account.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"81478b5e-b346-44a0-a7dd-c41a9d3df3d0","location":"https://preview.eniv.app/account.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
       {
         headers: {
-          host: 'preview.eniv.app',
+          host: 'maltherapie-bubikon.ch',
           accept: '*/*',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/elementor-Willkommen-2048x1152.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/Homepage-Kids-286x300.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/Website-Erwachsene-300x225.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/animations/animations.min.css%3Fver=3.12.2.css',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js%3Fver=4.0.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/ui/core.min.js%3Fver=1.13.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://fonts.gstatic.com/s/montserrat/v26/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2',
+      {
+        headers: {
+          host: 'fonts.gstatic.com',
+          accept: 'application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'identity',
+          origin: 'https://maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'font',
+          'sec-fetch-mode': 'cors',
+          'sec-fetch-site': 'cross-site',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
       headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-    sleep(0.6)
-
-    response = http.get('https://preview.eniv.app/api/account/stats/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
       },
     })
-
-    response = http.get('https://preview.eniv.app/api/globalstats/accountscreated/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/upload.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/text-editor.2c35aafbe5bf0e127950.bundle.min.js',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    sleep(10.7)
   })
 
-  group('page_5 - https://preview.eniv.app/upload.php', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/account.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"879af4c8-62c3-4652-ab88-4dac68336f14","location":"https://preview.eniv.app/account.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+  group('page_3 - https://maltherapie-bubikon.ch/index.html%3Fp=14.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html%3Fp=14.html', {
+      headers: {
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+        'accept-encoding': 'gzip, deflate, br',
+        'alt-used': 'maltherapie-bubikon.ch',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+      },
+    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-14.css%3Fver=1692029353.css',
       {
         headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js%3Fver=4.0.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/ui/core.min.js%3Fver=1.13.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
       headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/feed.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
       },
     })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/text-editor.2c35aafbe5bf0e127950.bundle.min.js',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    sleep(5.6)
   })
 
-  group('page_6 - https://preview.eniv.app/feed.php', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/account.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"3e78c52f-abfd-4877-a9f3-29150b812442","location":"https://preview.eniv.app/upload.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+  group('page_4 - https://maltherapie-bubikon.ch/index.html%3Fp=18.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html%3Fp=18.html', {
+      headers: {
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+        'accept-encoding': 'gzip, deflate, br',
+        'alt-used': 'maltherapie-bubikon.ch',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+      },
+    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-18.css%3Fver=1692029354.css',
       {
         headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js%3Fver=4.0.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/ui/core.min.js%3Fver=1.13.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
       headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
       },
     })
-    sleep(0.9)
-
-    sleep(0.8)
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/text-editor.2c35aafbe5bf0e127950.bundle.min.js',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
     sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/random.php', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
   })
 
-  group('page_7 - https://preview.eniv.app/random.php', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/upload.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"43f57e06-b666-4e67-949e-4004644d5b7e","location":"https://preview.eniv.app/feed.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+  group('page_5 - https://maltherapie-bubikon.ch/index.html%3Fp=16.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html%3Fp=16.html', {
+      headers: {
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+        'accept-encoding': 'gzip, deflate, br',
+        'alt-used': 'maltherapie-bubikon.ch',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+      },
+    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-16.css%3Fver=1692029357.css',
       {
         headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_2085-300x225.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_2086-300x225.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_2093-300x225.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js%3Fver=4.0.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/ui/core.min.js%3Fver=1.13.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_2095-300x201.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
       headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/videos/randomVideo/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
-      headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
-      headers: {
-        host: 'eniv.app',
-        accept: 'image/avif,image/webp,*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'image',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
       },
     })
-    sleep(0.7)
-
-    response = http.get('https://preview.eniv.app/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    sleep(1.5)
   })
 
-  group('page_8 - https://preview.eniv.app/', function () {
-    response = http.post(
-      'https://preview.eniv.app/cdn-cgi/rum?',
-      '{"resources":[],"referrer":"https://preview.eniv.app/feed.php","eventType":1,"firstPaint":0,"firstContentfulPaint":2176,"startTime":1703169036826,"versions":{"fl":"2023.10.0","js":"2023.10.0","timings":1},"pageloadId":"9b727ed4-ec4e-4daa-9abb-4ded86f85c31","location":"https://preview.eniv.app/random.php","timingsV2":{"nextHopProtocol":"h2"},"siteToken":"3e434a3218294419a8be8c4ff9fed34e","st":2}',
+  group('page_6 - https://maltherapie-bubikon.ch/index.html%3Fp=300.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html%3Fp=300.html', {
+      headers: {
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+        'accept-encoding': 'gzip, deflate, br',
+        'alt-used': 'maltherapie-bubikon.ch',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+      },
+    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/elementor/css/post-300.css%3Fver=1692029357.css',
       {
         headers: {
-          host: 'preview.eniv.app',
-          accept: '*/*',
+          host: 'maltherapie-bubikon.ch',
+          accept: 'text/css,*/*;q=0.1',
           'accept-language': 'de,en-US;q=0.7,en;q=0.3',
           'accept-encoding': 'gzip, deflate, br',
-          'content-type': 'application/json',
-          origin: 'https://preview.eniv.app',
-          'alt-used': 'preview.eniv.app',
+          'alt-used': 'maltherapie-bubikon.ch',
           connection: 'keep-alive',
-          'sec-fetch-dest': 'empty',
-          'sec-fetch-mode': 'cors',
+          'sec-fetch-dest': 'style',
+          'sec-fetch-mode': 'no-cors',
           'sec-fetch-site': 'same-origin',
         },
       }
     )
-
-    response = http.get('https://eniv.app/fav/apple-touch-icon.png', {
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_2467-300x300.jpg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js%3Fver=4.0.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/ui/core.min.js%3Fver=1.13.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
       headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
+        'sec-fetch-site': 'same-origin',
       },
     })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/text-editor.2c35aafbe5bf0e127950.bundle.min.js',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    sleep(2.7)
+  })
 
-    response = http.get('https://eniv.app/fav/favicon-16x16.png', {
+  group('page_7 - https://maltherapie-bubikon.ch/index.html', function () {
+    response = http.get('https://maltherapie-bubikon.ch/index.html', {
       headers: {
-        host: 'eniv.app',
+        host: 'maltherapie-bubikon.ch',
+        accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+        'accept-encoding': 'gzip, deflate, br',
+        'alt-used': 'maltherapie-bubikon.ch',
+        connection: 'keep-alive',
+        'upgrade-insecure-requests': '1',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+      },
+    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery.min.js%3Fver=3.7.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-includes/js/jquery/jquery-migrate.min.js%3Fver=3.4.1',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js%3Fver=1.0.0',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/frontend-modules.min.js%3Fver=3.12.2',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get('https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912.jpeg', {
+      headers: {
+        host: 'maltherapie-bubikon.ch',
         accept: 'image/avif,image/webp,*/*',
         'accept-language': 'de,en-US;q=0.7,en;q=0.3',
         'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'eniv.app',
+        'alt-used': 'maltherapie-bubikon.ch',
         connection: 'keep-alive',
         'sec-fetch-dest': 'image',
         'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'same-site',
-      },
-    })
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
       },
     })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
-    sleep(1)
-
-    response = http.get('https://preview.eniv.app/api/live/update/', {
-      headers: {
-        host: 'preview.eniv.app',
-        accept: '*/*',
-        'accept-language': 'de,en-US;q=0.7,en;q=0.3',
-        'accept-encoding': 'gzip, deflate, br',
-        'alt-used': 'preview.eniv.app',
-        connection: 'keep-alive',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-      },
-    })
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/uploads/2022/11/IMG_3912-150x150.jpeg',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: 'image/avif,image/webp,*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'image',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
+    response = http.get(
+      'https://maltherapie-bubikon.ch/wp-content/plugins/elementor/assets/js/text-editor.2c35aafbe5bf0e127950.bundle.min.js',
+      {
+        headers: {
+          host: 'maltherapie-bubikon.ch',
+          accept: '*/*',
+          'accept-language': 'de,en-US;q=0.7,en;q=0.3',
+          'accept-encoding': 'gzip, deflate, br',
+          'alt-used': 'maltherapie-bubikon.ch',
+          connection: 'keep-alive',
+          'sec-fetch-dest': 'script',
+          'sec-fetch-mode': 'no-cors',
+          'sec-fetch-site': 'same-origin',
+        },
+      }
+    )
   })
 }

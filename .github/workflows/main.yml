@@ -1,9 +1,6 @@
 name: Main Workflow
 on:
   push:
-  
-  schedule:
-  - cron: "*/5 * * * *"
 jobs:
   build:
     name: Run k6 test
